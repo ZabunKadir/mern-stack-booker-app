@@ -29,7 +29,7 @@ Project Link:
 - [Vercel Link](https://mern-stack-booker-app.vercel.app/)
 - [Heroku API Link](https://mern-stack-booker.herokuapp.com/)
 
-![alt text](https://github.com/ZabunKadir/mern-stack-booker-app/images/homepage.png?raw=true)
+![alt text](https://github.com/ZabunKadir/mern-stack-booker-app/blob/main/images/homepage.png)
 Tech Stack:
 
 - Developed with React and Node.js
@@ -94,5 +94,5 @@ Project Link: [Github](https://github.com/ZabunKadir/mern-stack-booker-app)
 
 ## Images
 
-![alt text](https://github.com/ZabunKadir/mern-stack-booker-app/images/profilePage.png=x400)
-![alt text](https://github.com/ZabunKadir/mern-stack-booker-app/images/responsiveRecommendation.png=x400)
+![alt text](https://github.com/ZabunKadir/mern-stack-booker-app/blob/main/images/profilePage.png=x400)
+![alt text](https://github.com/ZabunKadir/mern-stack-booker-app/blob/main/images/responsiveRecommendation.png=x400)
