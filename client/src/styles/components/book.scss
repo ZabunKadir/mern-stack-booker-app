@@ -20,16 +20,22 @@
     flex-direction: column;
     height: 100%;
     border-bottom: 2px solid $color-border;
-    margin-left: 10px;
-    margin-right: 10px;
+    @include mq("tablet") {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
     background-color: rgb(230, 230, 230, 0.2);
     &:hover {
       .Book-content-image {
         img {
           padding-top: 5px;
           padding-bottom: 5px;
-          width: 80%;
+          width: 90%;
           height: auto;
+          @include mq("tablet") {
+            width: 80%;
+          }
         }
       }
     }
@@ -40,16 +46,22 @@
       margin-left: auto;
       margin-right: auto;
       margin-top: 20px;
-      width: 50%;
+      width: 70%;
       height: 256px;
       padding: 10px;
       border: 2px solid $color-border;
+      @include mq("tablet") {
+        width: 50%;
+      }
       img {
         padding-top: 20px;
         padding-bottom: 20px;
-        width: 60%;
+        width: 80%;
         height: auto;
         transition: 300ms;
+        @include mq("tablet") {
+          width: 60%;
+        }
       }
     }
     &-text {

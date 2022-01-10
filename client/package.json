@@ -55,6 +55,6 @@
   "main": "index.js",
   "devDependencies": {},
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": ""
 }
