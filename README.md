@@ -100,4 +100,4 @@ Profile Page:
 
 Responsive Design Recommendation Area:
 
-<img src="https://github.com/ZabunKadir/mern-stack-booker-app/blob/main/images/responsiveRecommendation.png?raw=true" alt="profile" height="60%"/>
+<img src="https://github.com/ZabunKadir/mern-stack-booker-app/blob/main/images/responsiveRecommendation.png?raw=true" alt="profile" width = "60%" height="60%"/>
