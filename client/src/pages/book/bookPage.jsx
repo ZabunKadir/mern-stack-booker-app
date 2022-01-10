@@ -36,7 +36,7 @@ const BookPage = () => {
   const { width } = useWindowDimensions();
   useEffect(() => {
     getBookById(location.pathname.split("/")[2]);
-  }, [location]);
+  }, [location, user]);
   useEffect(() => {
     if (user && book) {
       setPlaceholderUser(
@@ -206,7 +206,7 @@ const BookPage = () => {
               <button
                 className="BookPage-content-list-buttons-item"
                 title="Add Favorites List"
-                onClick={(e) => clickHandler(e, user, book, "favorite")}
+                onClick={(e) => clickHandler(e, user, book, "favoriteBooks")}
               >
                 <FontAwesomeIcon
                   className={
@@ -220,7 +220,7 @@ const BookPage = () => {
               <button
                 className="BookPage-content-list-buttons-item"
                 title="Add Read List"
-                onClick={(e) => clickHandler(e, user, book, "readBook")}
+                onClick={(e) => clickHandler(e, user, book, "readBooks")}
               >
                 <FontAwesomeIcon
                   className={
@@ -234,7 +234,7 @@ const BookPage = () => {
               <button
                 className="BookPage-content-list-buttons-item"
                 title="Add To-Read List"
-                onClick={(e) => clickHandler(e, user, book, "toRead")}
+                onClick={(e) => clickHandler(e, user, book, "toReadBooks")}
               >
                 <FontAwesomeIcon
                   className={

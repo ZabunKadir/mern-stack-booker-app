@@ -13,12 +13,18 @@ SwiperCore.use([Pagination, Navigation]);
 
 const Recommendation = ({ number }) => {
   const { recommendationList } = RecommendationHooks();
+  const [list, setList] = useState({});
   const [viewNumber, setViewNumber] = useState(3);
   useEffect(() => {
     if (number) {
       setViewNumber(number);
     }
   }, [number]);
+  useEffect(() => {
+    if (recommendationList) {
+      setList(recommendationList);
+    }
+  }, [recommendationList]);
   return (
     <div className="Recommendation">
       <div className="Recommendation-title">
@@ -39,7 +45,7 @@ const Recommendation = ({ number }) => {
           // onSwiper={(swiper) => console.log(swiper)}
           className="Recommendation-books-swiper"
         >
-          {recommendationList?.list?.map((item, index) =>
+          {list?.list?.map((item) =>
             item ? (
               <SwiperSlide>
                 <RecommendationCard book={item}></RecommendationCard>

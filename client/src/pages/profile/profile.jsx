@@ -135,31 +135,31 @@ const Profile = () => {
               <div className="Profile-book-items-button">
                 <Button
                   className={
-                    name === "readBook" || !name
+                    name === "readBooks" || !name
                       ? "Profile-book-items-button-item btn-success"
                       : "Profile-book-items-button-item btn-dark"
                   }
-                  onClick={() => setName("readBook")}
+                  onClick={() => setName("readBooks")}
                 >
                   Read Books
                 </Button>
                 <Button
                   className={
-                    name === "favorite"
+                    name === "favoriteBooks"
                       ? "Profile-book-items-button-item btn-success"
                       : "Profile-book-items-button-item btn-dark"
                   }
-                  onClick={() => setName("favorite")}
+                  onClick={() => setName("favoriteBooks")}
                 >
                   Favorite Books
                 </Button>
                 <Button
                   className={
-                    name === "toRead"
+                    name === "toReadBooks"
                       ? "Profile-book-items-button-item btn-success"
                       : "Profile-book-items-button-item btn-dark"
                   }
-                  onClick={() => setName("toRead")}
+                  onClick={() => setName("toReadBooks")}
                 >
                   To-Read List
                 </Button>
@@ -172,11 +172,11 @@ const Profile = () => {
                     searchInList(profile, name, e.target.value);
                   }}
                   placeholder={
-                    name === "readBook"
+                    name === "readBooks"
                       ? "Search in Read Books"
-                      : name === "favorite"
+                      : name === "favoriteBooks"
                       ? "Search in Favorite Books"
-                      : name === "toRead"
+                      : name === "toReadBooks"
                       ? "Search in To-Read Books"
                       : "Search in Read Books"
                   }

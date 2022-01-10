@@ -43,7 +43,7 @@ router.route("/signIn").post(authUser);
 router.route("/profile/:id").post(getProfile);
 router.route("/profile/:id/listActions").post(listActions);
 router.route("/profile/:id/ratingActions").post(protect, ratingActions);
-router.route("/profile/:id/deleteBook").post(deleteBook);
+router.route("/profile/:id/deleteBook").post(protect, deleteBook);
 router.route("/profile/:id/searchBook").post(searchInProfile);
 
 router

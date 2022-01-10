@@ -16,7 +16,7 @@ const BookHooks = () => {
   const { selectedCategory, mainCategory } = useSelector(
     (state) => state.category
   );
-  const { loading, error, books, book } = useSelector((state) => state.book);
+  const { loading, books, book } = useSelector((state) => state.book);
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("profile"))?.result
   );
@@ -75,23 +75,23 @@ const BookHooks = () => {
       addSearchValueToUser(user, searchValue);
     }
   };
-  const buttonControl = (user, book) => {
+  const buttonControl = async (user, book) => {
     if (book) {
       if (user) {
         if (user.favoriteBooks.some((item) => item.id === book.id)) {
-          setFavoriteButton(true);
+          await setFavoriteButton(true);
         } else {
-          setFavoriteButton(false);
+          await setFavoriteButton(false);
         }
         if (user.readBooks.some((item) => item.id === book.id)) {
-          setReadButton(true);
+          await setReadButton(true);
         } else {
-          setReadButton(false);
+          await setReadButton(false);
         }
         if (user.toReadBooks.some((item) => item.id === book.id)) {
-          setToReadButton(true);
+          await setToReadButton(true);
         } else {
-          setToReadButton(false);
+          await setToReadButton(false);
         }
       }
     }
@@ -109,11 +109,11 @@ const BookHooks = () => {
         }
       );
       localStorage.setItem("profile", JSON.stringify(res.data));
-      if (buttonType === "favorite") {
+      if (buttonType === "favoriteBooks") {
         setFavoriteButton(!favoriteButton);
-      } else if (buttonType === "readBook") {
+      } else if (buttonType === "readBooks") {
         setReadButton(!readButton);
-      } else if (buttonType === "toRead") {
+      } else if (buttonType === "toReadBooks") {
         setToReadButton(!toReadButton);
       }
     } else {

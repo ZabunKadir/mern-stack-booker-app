@@ -6,7 +6,7 @@ import ErrorMessage from "../../components/card/errorCard";
 const List = ({ books, name }) => {
   const [toggle, setToggle] = useState(false);
   const { loading, profile, useWindowDimensions } = useProfile();
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   useEffect(() => {
     if (width < 768) {
       setToggle(true);

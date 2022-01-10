@@ -100,21 +100,21 @@ const getBookBySearch = asyncHandler(async (req, res) => {
     searchValue.map((val) => {
       if (val != "") {
         allBooks.filter((book) => {
-          if (book.title.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-            if (!books.some((a) => a == book)) {
+          if (book.title.toLowerCase().includes(val.toLowerCase())) {
+            if (!books.includes(book)) {
               books.push(book);
             }
           }
           book.authors.filter((author) => {
-            if (author.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-              if (!books.some((a) => a == book)) {
+            if (author.toLowerCase().includes(val.toLowerCase())) {
+              if (!books.includes(book)) {
                 books.push(book);
               }
             }
           });
           book.categories.filter((category) => {
-            if (category.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-              if (!books.some((a) => a == book)) {
+            if (category.toLowerCase().includes(val.toLowerCase())) {
+              if (!books.includes(book)) {
                 books.push(book);
               }
             }

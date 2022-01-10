@@ -1,6 +1,5 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
-const generateToken = require("../utils/generateToken");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Book = require("../models/bookModel");
@@ -82,40 +81,15 @@ const getProfile = asyncHandler(async (req, res) => {
     throw new Error("User Not Found!");
   }
 });
-const addList = (user, book, buttonType) => {
-  if (buttonType === "favorite") {
-    user.favoriteBooks.push(book);
-  } else if (buttonType === "readBook") {
-    user.readBooks.push(book);
-  } else if (buttonType === "toRead") {
-    user.toReadBooks.push(book);
-  } else {
-    throw new Error("Not Added!");
-  }
-};
+
 const deleteList = async (user, book, buttonType) => {
-  if (buttonType === "favorite") {
-    const index = user.favoriteBooks.findIndex((item) => item.id === book.id);
+  if (user && buttonType) {
+    const index = user[buttonType].findIndex((item) => item.id === book.id);
     if (index == 0) {
-      user.favoriteBooks.pop();
+      user[buttonType].shift();
     } else {
-      user.favoriteBooks.splice(index, index);
+      user[buttonType].splice(index, index);
     }
-  } else if (buttonType === "readBook") {
-    const index = user.readBooks.findIndex((item) => item.id === book.id);
-    if (index == 0) {
-      user.readBooks.pop();
-    } else {
-      user.readBooks.splice(index, index);
-    }
-  } else if (buttonType === "toRead") {
-    const index = user.toReadBooks.findIndex((item) => item.id === book.id);
-    if (index == 0) {
-      user.toReadBooks.pop();
-    } else {
-      user.toReadBooks.splice(index, index);
-    }
-    //user.toReadBooks.pull(book);
   } else {
     throw new Error("Not Deleted!");
   }
@@ -126,26 +100,13 @@ const listActions = asyncHandler(async (req, res) => {
   const type = req.body.buttonType;
   const token = req.body.token;
   const user = await User.findById(userId);
-  if (user && token) {
-    if (type === "favorite") {
-      if (user.favoriteBooks.some((item) => item.id === book.id)) {
-        await deleteList(user, book, type);
-      } else {
-        await addList(user, book, type);
-      }
-    } else if (type === "readBook") {
-      if (user.readBooks.some((item) => item.id === book.id)) {
-        await deleteList(user, book, type);
-      } else {
-        await addList(user, book, type);
-      }
-    } else if (type === "toRead") {
-      if (user.toReadBooks.some((item) => item.id === book.id)) {
-        await deleteList(user, book, type);
-      } else {
-        await addList(user, book, type);
-      }
+  if (user) {
+    if (user[type].some((item) => item.id === book.id)) {
+      await deleteList(user, book, type);
+    } else {
+      await user[type].push(book);
     }
+
     const updatedUser = await user.save();
     res.status(200).json({ result: updatedUser, token });
   } else {
@@ -159,7 +120,7 @@ const deleteBook = asyncHandler(async (req, res) => {
   const type = req.body.type;
   const token = req.body.token;
   const user = await User.findById(userId);
-  if (user && token) {
+  if (user) {
     await deleteList(user, book, type);
     const updatedUser = await user.save();
     res.status(200).json({ result: updatedUser, token });
@@ -175,85 +136,32 @@ const searchInProfile = asyncHandler(async (req, res) => {
   const values = req.body.searchValue.split(" ");
   const books = [];
   if (user) {
-    if (type === "favorite") {
-      values.map((val, index) => {
-        if (val != "") {
-          user.favoriteBooks.filter((book) => {
-            if (book.title.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-              if (!books.some((a) => a == book)) {
+    values.map((val) => {
+      if (val != "") {
+        user[type].filter((book) => {
+          if (book.title.toLowerCase().includes(val.toLowerCase())) {
+            if (!books.includes(book)) {
+              books.push(book);
+            }
+          }
+          book.authors.filter((author) => {
+            if (author.toLowerCase().includes(val.toLowerCase())) {
+              if (!books.includes(book)) {
                 books.push(book);
               }
             }
-            book.authors.filter((author) => {
-              if (author.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-                if (!books.some((a) => a == book)) {
-                  books.push(book);
-                }
-              }
-            });
-            book.categories.filter((category) => {
-              if (category.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-                if (!books.some((a) => a == book)) {
-                  books.push(book);
-                }
-              }
-            });
           });
-        }
-      });
-    } else if (type === "readBook") {
-      values.map((val, index) => {
-        if (val != "") {
-          user.readBooks.filter((book) => {
-            if (book.title.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-              if (!books.some((a) => a == book)) {
+          book.categories.filter((category) => {
+            if (category.toLowerCase().includes(val.toLowerCase())) {
+              if (!books.includes(book)) {
                 books.push(book);
               }
             }
-            book.authors.filter((author) => {
-              if (author.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-                if (!books.some((a) => a == book)) {
-                  books.push(book);
-                }
-              }
-            });
-            book.categories.filter((category) => {
-              if (category.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-                if (!books.some((a) => a == book)) {
-                  books.push(book);
-                }
-              }
-            });
           });
-        }
-      });
-    } else if (type === "toRead") {
-      values.map((val, index) => {
-        if (val != "") {
-          user.toReadBooks.filter((book) => {
-            if (book.title.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-              if (!books.some((a) => a == book)) {
-                books.push(book);
-              }
-            }
-            book.authors.filter((author) => {
-              if (author.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-                if (!books.some((a) => a == book)) {
-                  books.push(book);
-                }
-              }
-            });
-            book.categories.filter((category) => {
-              if (category.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-                if (!books.some((a) => a == book)) {
-                  books.push(book);
-                }
-              }
-            });
-          });
-        }
-      });
-    }
+        });
+      }
+    });
+
     res.status(200).json(books);
   } else {
     res.status(404);
@@ -313,13 +221,13 @@ const getProfilesBySearch = asyncHandler(async (req, res) => {
     searchValue.map((val) => {
       if (val != "") {
         allUsers.filter((user) => {
-          if (user.name.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-            if (!users.some((a) => a == user)) {
+          if (user.name.toLowerCase().includes(val.toLowerCase())) {
+            if (!users.includes(user)) {
               users.push(user);
             }
           }
-          if (user.surname.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-            if (!users.some((a) => a == user)) {
+          if (user.surname.toLowerCase().includes(val.toLowerCase())) {
+            if (!users.includes(user)) {
               users.push(user);
             }
           }
@@ -341,7 +249,7 @@ const ratingActions = asyncHandler(async (req, res) => {
   if (user) {
     const index = user.ratings.findIndex((a) => a.bookId === bookId);
     if (index == 0) {
-      user.ratings.pop();
+      user.ratings.shift();
     } else if (index != -1) {
       user.ratings.splice(index, index);
     }
@@ -496,21 +404,21 @@ const recommendationListByUser = async (user, allBooks) => {
     await searchedByUser?.map((val) => {
       if (val != "") {
         allBooks.filter((book) => {
-          if (book.title.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-            if (!books.some((a) => a == book)) {
+          if (book.title.toLowerCase().includes(val.toLowerCase())) {
+            if (!books.includes(book)) {
               books.push(book);
             }
           }
           book.authors.filter((author) => {
-            if (author.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-              if (!books.some((a) => a == book)) {
+            if (author.toLowerCase().includes(val.toLowerCase())) {
+              if (!books.includes(book)) {
                 books.push(book);
               }
             }
           });
           book.categories.filter((category) => {
-            if (category.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-              if (!books.some((a) => a == book)) {
+            if (category.toLowerCase().includes(val.toLowerCase())) {
+              if (!books.includes(book)) {
                 books.push(book);
               }
             }
@@ -648,7 +556,7 @@ const recommendationListByUser = async (user, allBooks) => {
         !user.toReadBooks.some((toRead) => toRead.id == book.id) &&
         !user.readBooks.some((read) => read.id == book.id)
       ) {
-        if (!list.some((listBook) => listBook == book)) {
+        if (!list.includes(book)) {
           if (valueType) {
             book[valueType].filter(function (type) {
               if (type == rangeValue) {
@@ -702,7 +610,7 @@ const recommendationListByUser = async (user, allBooks) => {
         } else if (bookControlledInsertion(fillTwo, user, list, null, null)) {
           list.push(fillTwo);
         } else {
-          console.log("While Error");
+          console.log("While Error 1");
         }
       }
     } else {
@@ -714,7 +622,7 @@ const recommendationListByUser = async (user, allBooks) => {
         } else if (bookControlledInsertion(fillTwo, user, list, null, null)) {
           list.push(fillTwo);
         } else {
-          console.log("While Error");
+          console.log("While Error 2");
         }
       }
     }
@@ -789,7 +697,7 @@ const trackerUser = asyncHandler(async (req, res) => {
     try {
       if (req.body.searchValue) {
         if (!user.recentSearches.some((item) => item == req.body.searchValue)) {
-          if (user.recentSearches.length <= 20) {
+          if (user.recentSearches.length < 20) {
             user.recentSearches.push(req.body.searchValue);
           } else {
             user.recentSearches.shift();
@@ -798,7 +706,7 @@ const trackerUser = asyncHandler(async (req, res) => {
         }
       } else {
         if (!user.lastClicked.some((item) => item == req.body.book.id)) {
-          if (user.lastClicked.length <= 20) {
+          if (user.lastClicked.length < 20) {
             user.lastClicked.push(req.body.book.id);
           } else {
             user.lastClicked.shift();

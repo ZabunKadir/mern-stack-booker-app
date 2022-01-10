@@ -32,11 +32,11 @@ const ProfileHooks = () => {
     }
   };
   const buttonBookHandler = async (name) => {
-    if (name === "readBook") {
+    if (name === "readBooks") {
       await setBooks(profile?.readBooks);
-    } else if (name === "favorite") {
+    } else if (name === "favoriteBooks") {
       await setBooks(profile?.favoriteBooks);
-    } else if (name === "toRead") {
+    } else if (name === "toReadBooks") {
       await setBooks(profile?.toReadBooks);
     }
   };
@@ -66,7 +66,7 @@ const ProfileHooks = () => {
   }
   const searchInList = async (user, type, searchValue) => {
     if (type == null) {
-      type = "readBook";
+      type = "readBooks";
     }
     if (user && searchValue !== "") {
       const res = await API.post("/users/profile/" + user._id + "/searchBook", {
@@ -83,7 +83,7 @@ const ProfileHooks = () => {
       if (name != null) {
         buttonBookHandler(name);
       } else {
-        buttonBookHandler("readBook");
+        buttonBookHandler("readBooks");
       }
     } else {
       return;

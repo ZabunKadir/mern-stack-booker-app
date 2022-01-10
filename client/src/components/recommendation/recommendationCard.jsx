@@ -4,8 +4,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 import React from "react";
 import Rating from "react-rating";
-const RecommendationCard = ({ book, grid }) => {
-  const path = "/books/" + `${book?.id}`;
+const RecommendationCard = ({ book }) => {
+  const path = "/books/" + book?.id;
   return (
     <div className="RecommendationCard">
       <div className="RecommendationCard-content">

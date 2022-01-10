@@ -21,7 +21,7 @@ const ListCard = ({ items, number, currentProfile, buttonType }) => {
   const [listName, setListName] = useState("");
   function CopyButton(item) {
     const url = document.createElement("input");
-    url.value = API.defaults.baseURL + "/books/" + `${item.id}`;
+    url.value = API.defaults.baseURL + "/books/" + item?.id;
     document.body.appendChild(url);
     url.select();
     document.execCommand("Copy");
@@ -31,7 +31,7 @@ const ListCard = ({ items, number, currentProfile, buttonType }) => {
 
   useEffect(() => {
     if (buttonType == null) {
-      setListName("readBook");
+      setListName("readBooks");
     } else {
       setListName(buttonType);
     }
@@ -40,11 +40,21 @@ const ListCard = ({ items, number, currentProfile, buttonType }) => {
     if (user) {
       e.preventDefault();
       const token = JSON.parse(localStorage.getItem("profile"))?.token;
-      const res = await API.post("/users/profile/" + user._id + "/deleteBook", {
-        book,
-        type,
-        token,
-      });
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: { token },
+        },
+      };
+      const res = await API.post(
+        "/users/profile/" + user._id + "/deleteBook",
+        {
+          book,
+          type,
+          token,
+        },
+        config
+      );
       localStorage.setItem("profile", JSON.stringify(res.data));
       dispatch(getProfile(location.pathname));
     } else {
@@ -68,10 +78,7 @@ const ListCard = ({ items, number, currentProfile, buttonType }) => {
       </div>
 
       <div className="ListCard-item">
-        <Link
-          to={"/books/" + `${items.id}`}
-          className="Profile-book-table-link"
-        >
+        <Link to={"/books/" + items.id} className="Profile-book-table-link">
           Go Book
         </Link>
       </div>
