@@ -94,5 +94,7 @@ Project Link: [Github](https://github.com/ZabunKadir/mern-stack-booker-app)
 
 ## Images
 
+Profile Page:
 ![alt text](https://github.com/ZabunKadir/mern-stack-booker-app/blob/main/images/profilePage.png?raw=true)
+Responsive Recommendation Area:
 ![alt text](https://github.com/ZabunKadir/mern-stack-booker-app/blob/main/images/responsiveRecommendation.png?raw=true)
