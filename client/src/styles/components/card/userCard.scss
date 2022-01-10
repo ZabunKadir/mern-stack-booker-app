@@ -1,0 +1,107 @@
+.UserCard {
+  display: flex;
+  width: 90%;
+  height: $finger-size * 2;
+  border: 1px solid $color-border;
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+  font-family: $font-sharp;
+  font-size: $font-size-normal;
+  margin: 10px auto;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  @include mq("tablet") {
+    width: 45%;
+  }
+  &:hover {
+    background-color: $color-font;
+  }
+  a {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+  }
+  &-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    &-image {
+      display: flex;
+      width: 68px;
+      height: auto;
+      border: 2px solid $color-orange;
+      border-radius: 100px;
+      img {
+        display: flex;
+        margin: auto auto;
+        border-radius: 100px;
+        width: 64px;
+        height: auto;
+      }
+    }
+    &-information {
+      display: flex;
+      flex-direction: row;
+      margin: auto 5px;
+      @include mq("tablet") {
+        margin: auto 10px;
+      }
+      justify-content: space-around;
+      width: 70%;
+      color: $color-lightgray;
+      &-total,
+      &-name {
+        display: flex;
+        margin-left: 5px;
+        @include mq("tablet") {
+          margin-left: 10px;
+        }
+        span {
+          margin-left: 5px;
+          @include mq("tablet") {
+            margin-left: 10px;
+          }
+          color: $color-orange;
+        }
+      }
+      &-name {
+        font-size: 16px;
+        @include mq("tablet") {
+          font-size: 20px;
+        }
+      }
+      &-total {
+        font-size: 16px;
+        @include mq("tablet") {
+          font-size: 18px;
+        }
+      }
+    }
+    &-button {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      width: 20%;
+      button {
+        font-family: $font-general;
+        width: 100%;
+        color: $color-font;
+        background-color: $color-darkgray;
+        border-radius: 4px;
+        height: auto;
+        @include mq("tablet") {
+          height: calc($finger-size/1.25);
+        }
+        border: none;
+        &:hover {
+          background-color: $color-lightgray;
+        }
+      }
+    }
+  }
+}

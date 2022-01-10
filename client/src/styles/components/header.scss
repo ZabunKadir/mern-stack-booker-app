@@ -1,0 +1,50 @@
+.Navbar {
+  width: 100%;
+  height: auto;
+  background-color: $color-darkgray;
+  font-family: $font-sharp;
+  .navbar-brand {
+    cursor: default;
+    margin-left: 20px;
+  }
+  &-logo {
+    color: $color-font;
+  }
+  .Navbar-nav {
+    margin-left: 75%;
+  }
+  &-nav {
+    width: 100%;
+    justify-content: center;
+    &-item {
+      color: $color-font;
+    }
+  }
+  .actived {
+    border-bottom: 4px solid $color-orange;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    transition: 300ms;
+    pointer-events: none;
+  }
+}
+.nav {
+  width: 100%;
+  justify-content: center;
+  &-item {
+    color: $color-font;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    a {
+      color: $color-font;
+      transition: 300ms;
+      &:hover {
+        color: $color-orange;
+      }
+    }
+  }
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}

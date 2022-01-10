@@ -1,0 +1,100 @@
+.Menu {
+  width: 100%;
+  border: 2px solid $color-border;
+  margin-top: 20px;
+  font-family: $font-general;
+  a {
+    text-decoration: none;
+  }
+  &-content {
+    width: 100%;
+    height: auto;
+    &-categories-items {
+      padding: 20px;
+
+      .Categories-item {
+        &-main {
+          &-category {
+            button {
+              transition: 300ms;
+              &:hover {
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+                  rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+                  rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+              }
+              &:focus {
+                border: none;
+                .category-icon {
+                  color: $color-orange;
+                }
+              }
+            }
+          }
+
+          &-card {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 80%;
+            margin: 10px auto;
+            button {
+              width: 100%;
+              height: $finger-size;
+              background: none;
+              border: none;
+              margin: 0 auto;
+              text-align: left;
+              border-bottom: 1px solid $color-border;
+              font-size: $font-size-small + 2px;
+              transition: 150ms;
+              &:hover {
+                background-color: $color-orange;
+                color: $color-font;
+                border: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    &-text {
+      background-color: $color-lightgray;
+      font-size: $font-size-normal;
+      font-family: $font-sharp;
+      button {
+        display: flex;
+        text-align: center;
+        line-height: $finger-size;
+      }
+      &-span {
+        display: flex;
+        padding: 10px;
+        color: $color-font;
+        font-weight: bold;
+        width: 100%;
+        margin-left: 10px;
+      }
+      &-icon {
+        margin: auto auto;
+        display: flex;
+        margin-left: 20px;
+        margin-right: 10px;
+        font-size: 36px;
+        line-height: $finger-size;
+      }
+      button {
+        text-align: left;
+        font-weight: bold;
+        width: 100%;
+        color: $color-font;
+        height: $finger-size;
+        background: none;
+        border: none;
+        border-bottom: 2px solid $color-lightgray;
+      }
+    }
+  }
+}
+.category-icon {
+  margin-left: 10px;
+}

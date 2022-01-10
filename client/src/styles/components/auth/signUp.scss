@@ -1,0 +1,144 @@
+.SignUp {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  font-family: $font-general;
+  margin: 20px auto;
+  border: 2px solid $color-border;
+  padding: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  @include mq("tablet") {
+    width: 40%;
+  }
+  a {
+    text-decoration: none;
+  }
+  &-with {
+    &-hr {
+      height: 40px;
+      line-height: 40px;
+      position: relative;
+      text-align: center;
+      margin-top: 10px;
+      hr {
+        display: inline-block;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        margin-top: -1px;
+        left: 0;
+        z-index: 1;
+      }
+      &-label {
+        display: inline-block;
+        font-size: $font-size-big;
+        width: 140px;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        z-index: 2;
+        position: relative;
+        font-family: $font-sharp;
+        font-weight: 600;
+      }
+    }
+  }
+  &-label {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  &-user {
+    &-form {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 10px;
+      label {
+        margin-bottom: 10px;
+      }
+    }
+    .form-control {
+      margin-left: auto;
+      margin-right: auto;
+      width: 70%;
+    }
+    .form {
+      &-name {
+        width: 100%;
+        margin-right: 0px;
+      }
+      &-surname {
+        width: 100%;
+        margin-left: 5px;
+      }
+    }
+  }
+  &-any-account {
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  &-terms {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    &-label {
+      color: $color-lightgray;
+    }
+    &-checkbox {
+      margin-right: 10px;
+    }
+  }
+  &-button {
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    width: 40%;
+    background-color: $color-orange;
+    height: $finger-size;
+    color: $color-font;
+    font-size: $font-size-normal;
+    transition: 300ms;
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+  }
+}
+.google {
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.apple {
+  color: $color-font;
+  background-color: black;
+}
+.facebook {
+  background-color: #3b5998;
+  color: $color-font;
+}
+.twitter {
+  background-color: #00acee;
+  color: $color-font;
+}
+.icon {
+  &-google {
+    font-size: 26px;
+  }
+  &-apple {
+    font-size: 26px;
+  }
+  &-facebook {
+    font-size: 32px;
+  }
+  &-twitter {
+    font-size: 32px;
+  }
+}

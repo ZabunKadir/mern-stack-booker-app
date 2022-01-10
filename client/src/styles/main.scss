@@ -1,0 +1,24 @@
+// UTILITIES
+@import "./utils/variable.scss";
+//CONFIG
+@import "./config/mixin.scss";
+// BASE
+@import "./base/normalize.scss";
+
+// COMPONENTS
+@import "./components/home.scss";
+@import "./components/header.scss";
+@import "./components/menu.scss";
+@import "./components/book.scss";
+@import "./components/auth/signIn.scss";
+@import "./components/auth/signUp.scss";
+@import "./components/footer.scss";
+@import "./components/notFound.scss";
+@import "./components/pagination.scss";
+@import "./components/bookPage.scss";
+@import "./components/profile.scss";
+@import "./components/recommendation.scss";
+//COMPONENT-CARD
+@import "./components/card/loading.scss";
+@import "./components/card/categoryCard.scss";
+@import "./components/card/userCard.scss";

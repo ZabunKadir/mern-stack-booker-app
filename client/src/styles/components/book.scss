@@ -1,0 +1,159 @@
+.Book {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  font-family: $font-general;
+  margin-top: 10px;
+  @include mq("tablet") {
+    width: 50%;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      color: black;
+    }
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-bottom: 2px solid $color-border;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgb(230, 230, 230, 0.2);
+    &:hover {
+      .Book-content-image {
+        img {
+          padding-top: 5px;
+          padding-bottom: 5px;
+          width: 80%;
+          height: auto;
+        }
+      }
+    }
+
+    &-image {
+      display: flex;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      width: 50%;
+      height: 256px;
+      padding: 10px;
+      border: 2px solid $color-border;
+      img {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 60%;
+        height: auto;
+        transition: 300ms;
+      }
+    }
+    &-text {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      height: 192px;
+      &-name {
+        font-family: $font-sharp;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      &-author {
+        color: $color-orange;
+        &-item {
+          &-and {
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: $font-size-small;
+            color: black;
+          }
+        }
+      }
+      &-rating {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 5px;
+        width: 100%;
+        &-span {
+          margin-left: 10px;
+        }
+      }
+      &-description {
+        margin-bottom: 10px;
+        padding: 20px;
+        overflow-y: hidden;
+        color: rgb(100, 100, 100);
+      }
+    }
+    &-button {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: $finger-size * 2;
+
+      &-item {
+        background-color: $color-orange;
+        color: $color-font;
+        font-family: $font-sharp;
+        margin: 10px auto;
+        width: 240px;
+        height: $finger-size;
+        font-size: $font-size-normal;
+        border: none;
+        transition: 200ms;
+        letter-spacing: 2px;
+        margin-top: auto;
+        margin-bottom: auto;
+        font-weight: bold;
+        &-icon {
+          font-size: $font-size-normal;
+          margin-left: 10px;
+        }
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+      }
+    }
+  }
+}
+.Book-thr {
+  display: flex;
+  width: 33%;
+  height: auto;
+  flex-direction: column;
+  font-family: $font-general;
+  margin-top: 10px;
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      color: black;
+    }
+  }
+  .Book-content {
+    &-image {
+      width: 70%;
+    }
+    &:hover {
+      .Book-content-image {
+        img {
+          width: 100%;
+        }
+      }
+    }
+    &-image {
+      img {
+        width: 80%;
+      }
+    }
+  }
+}

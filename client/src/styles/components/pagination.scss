@@ -1,0 +1,67 @@
+.Pagination {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  font-family: $font-general;
+  font-size: $font-size-normal;
+  margin-top: 20px;
+  list-style-type: none;
+  flex-wrap: wrap;
+  a {
+    text-decoration: none;
+  }
+  &-main {
+    display: flex;
+    flex-direction: column;
+    &-books {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+  }
+  li {
+    margin-top: 5px;
+    @include mq("tablet") {
+      margin-top: 0px;
+    }
+    a {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+    }
+  }
+  &-button {
+    display: flex;
+    margin: auto 3px;
+    background-color: $color-lightgray;
+    color: $color-font;
+    height: calc($finger-size/ 1.1);
+    width: calc($finger-size/ 1.1);
+    transition: 200ms;
+
+    &:hover {
+      background-color: $color-orange;
+      font-weight: bold;
+    }
+    &-active {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+      color: $color-font;
+      background-color: $color-orange;
+    }
+  }
+  &-span {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    a {
+      color: $color-orange;
+      &:hover {
+        color: $color-darkgray;
+      }
+    }
+  }
+}

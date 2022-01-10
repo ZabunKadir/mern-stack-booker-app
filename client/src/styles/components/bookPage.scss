@@ -1,0 +1,200 @@
+.BookPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  font-family: $font-sharp;
+  font-size: $font-size-small + 4;
+  &-content {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: 5px auto;
+    border: 2px solid $color-border;
+    @include mq("tablet") {
+      width: 50%;
+    }
+    &-top {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      @include mq("tablet") {
+        flex-direction: row;
+      }
+      &-table {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        border: 1px solid $color-lightgray;
+        @include mq("tablet") {
+          width: 80%;
+        }
+      }
+      &-image {
+        display: flex;
+        justify-content: center;
+        width: 280px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        @include mq("tablet") {
+          margin-left: 10px;
+          margin-right: 20px;
+        }
+        padding: 10px;
+        border: 1px solid $color-lightgray;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      &-info {
+        &-title {
+          display: flex;
+          width: 100%;
+          font-weight: bold;
+          justify-content: center;
+          h2 {
+            padding: 10px;
+            margin: auto;
+            color: $color-orange;
+          }
+        }
+        &-left {
+          width: 30%;
+          height: auto;
+        }
+        &-right {
+          width: 70%;
+          height: auto;
+          font-weight: bold;
+          &-span {
+            color: $color-lightgray;
+            font-size: 16px;
+            margin-left: 20px;
+          }
+        }
+      }
+      &-category {
+        margin: 5px 5px;
+      }
+      &-span {
+        background-color: $color-orange;
+        padding: 5px 30px;
+        color: white;
+        border-radius: 10px;
+      }
+    }
+    &-bottom {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5px;
+      padding: 10px;
+      &-info {
+        &-description {
+          padding: 10px;
+          box-shadow: rgb(218, 218, 218) 0px 0px 6px 6px inset,
+            rgba(255, 255, 255, 0.5) -3px -3px 6px 3px inset;
+
+          &-text {
+            margin-top: 10px;
+            color: $color-lightgray;
+            text-align: center;
+          }
+          &-article {
+            padding: 5px;
+          }
+        }
+      }
+    }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &-text {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      &-buttons {
+        display: flex;
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        &-item {
+          height: $finger-size;
+          width: $finger-size;
+          margin: 10px 10px;
+          border-radius: 20px;
+          background-color: none;
+          border-color: $color-border;
+          transition: 200ms;
+          &:hover {
+            border-color: $color-orange;
+          }
+          &::after {
+            background-color: $color-darkgray;
+            border-width: 3px;
+            border-color: $color-orange;
+          }
+        }
+        &-icon {
+          margin-top: 4px;
+          font-size: 18px;
+          color: $color-darkgray;
+          transition: 200ms;
+          &-actived {
+            color: $color-red;
+          }
+        }
+      }
+    }
+
+    &-rating {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      &-text {
+        display: flex;
+        justify-content: center;
+      }
+      &-star {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        font-size: 24px;
+      }
+    }
+  }
+  &-recommendation {
+    display: flex;
+    margin: 5px auto;
+    width: 80%;
+  }
+}
+
+.category {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: visible;
+  text-align: center;
+}
+.active {
+  &-favorite {
+    font-size: 24px;
+    color: $color-red;
+  }
+  &-readBook {
+    font-size: 24px;
+    color: $color-orange;
+  }
+  &-toRead {
+    font-size: 24px;
+    color: $color-lightgray;
+  }
+}

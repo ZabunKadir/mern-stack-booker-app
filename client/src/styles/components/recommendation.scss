@@ -1,0 +1,138 @@
+.Recommendation {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  font-family: $font-sharp;
+  &-title {
+    display: flex;
+    height: 32px;
+    margin-top: 10px;
+
+    background-color: $color-lightgray;
+    h4 {
+      display: flex;
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: 20px;
+      font-size: 1.25em;
+      color: $color-font;
+    }
+  }
+  &-books {
+    margin: 10px 10px;
+  }
+  &-shelf {
+    display: flex;
+    width: 100%;
+    height: auto;
+    position: relative;
+    &-bottom {
+      display: flex;
+      background-color: $color-border;
+      height: calc($finger-size/2);
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 20px 13px -3px,
+        rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
+    }
+    &-support {
+      display: flex;
+      width: 100%;
+      height: auto;
+      margin-top: -3px;
+      justify-content: space-between;
+      &-item {
+        width: 100px;
+        height: 80px;
+        background-color: $color-border;
+        clip-path: polygon(35% 0%, 65% 0%, 55% 100%, 45% 100%);
+      }
+    }
+  }
+}
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $color-lightgray;
+}
+.RecommendationCard {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-family: $font-general;
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      color: black;
+    }
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: rgb(230, 230, 230, 0.2);
+    &:hover {
+      .RecommendationCard-content-image {
+        img {
+          padding-top: 5px;
+          padding-bottom: 5px;
+          width: 80%;
+          height: auto;
+        }
+      }
+    }
+
+    &-image {
+      display: flex;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      width: 70%;
+      height: 256px;
+      padding: 10px;
+      border: 2px solid $color-border;
+      img {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 60%;
+        height: auto;
+        transition: 300ms;
+      }
+    }
+    &-text {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      height: 128px;
+      &-name {
+        font-family: $font-sharp;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      &-author {
+        color: $color-orange;
+        &-item {
+          &-and {
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: $font-size-small;
+            color: black;
+          }
+        }
+      }
+      &-rating {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 5px;
+        width: 100%;
+        &-span {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
