@@ -95,7 +95,9 @@ Project Link: [Github](https://github.com/ZabunKadir/mern-stack-booker-app)
 ## Images
 
 Profile Page:
+
 <img src="https://github.com/ZabunKadir/mern-stack-booker-app/blob/main/images/profilePage.png?raw=true" alt="profile" width="80%"/>
 
 Responsive Design Recommendation Area:
+
 <img src="https://github.com/ZabunKadir/mern-stack-booker-app/blob/main/images/responsiveRecommendation.png?raw=true" alt="profile" height="60%"/>
