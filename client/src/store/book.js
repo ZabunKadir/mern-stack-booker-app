@@ -12,12 +12,10 @@ export const book = createSlice({
     booksReceived: (state, action) => {
       state.loading = false;
       state.books = action.payload;
-      //localStorage.setItem("books", JSON.stringify(state.book));
     },
     bookReceived: (state, action) => {
       state.loading = false;
       state.book = action.payload;
-      //localStorage.setItem("books", JSON.stringify(state.book));
     },
     bookError: (state, action) => {
       state.loading = false;

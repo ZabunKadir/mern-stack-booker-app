@@ -26,10 +26,14 @@ const BookPage = () => {
     clickHandler,
     userRatingHandler,
     user,
+    useWindowDimensions,
   } = BookHooks();
   const [authors, setAuthors] = useState([]);
   const [categories, setCategories] = useState([]);
   const [placeholderUser, setPlaceholderUser] = useState(0);
+  const [toggle, setToggle] = useState(false);
+  const [recNumber, setrecNumber] = useState(3);
+  const { width } = useWindowDimensions();
   useEffect(() => {
     getBookById(location.pathname.split("/")[2]);
   }, [location]);
@@ -47,6 +51,18 @@ const BookPage = () => {
     setAuthors(book?.authors);
     setCategories(book?.categories);
   }, [book]);
+  useEffect(() => {
+    if (width < 768) {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+    if (toggle) {
+      setrecNumber(1);
+    } else {
+      setrecNumber(3);
+    }
+  }, [width, toggle]);
   return (
     <Layout>
       <div className="BookPage">
@@ -233,7 +249,7 @@ const BookPage = () => {
           </div>
         </div>
         <div className="BookPage-recommendation">
-          <Recommendation />
+          <Recommendation number={recNumber} />
         </div>
       </div>
     </Layout>
